@@ -57,7 +57,7 @@ parseTypescript(typescript).then(tsParsed => {
 
   const generated = ejs.render(ejsTemplate, ejsData).replace(/\n\s+$/gm, '\n');
   if (argv.spec) {
-    fs.existsSync(specFilePath) && util.createBackupFile(specFilePath);
+    fs.existsSync(specFilePath);
     fs.writeFileSync(specFilePath, generated);
     console.log('Generated unit test for', argv._[0], 'to', specFilePath);
   } else {
